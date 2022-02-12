@@ -4,10 +4,27 @@ Console.WriteLine("Welcome to the Enthusiastic Moose Simulator!");
 Console.WriteLine("--------------------------------------------");
 Console.WriteLine();
 
+MooseSays("H I, I'M  E N T H U S I A S T I C !");
 
-void MooseSays()
+
+void MooseQuestion(string question, string responseTrue, string responseFalse)
 {
-    Console.WriteLine(@"
+    bool answer = MooseAsks(question);
+    if (answer)
+    {
+        MooseSays(responseTrue);
+    }
+    else
+    {
+        MooseSays(responseFalse);
+    }
+}
+
+MooseQuestion("Are you shitty programmer?", "Well, keep trying, buddy", "That's cool, can you build a public api for me?");
+void MooseSays(string message)
+
+{
+    Console.WriteLine($@"
                                        _.--^^^--,
                                     .'          `\
   .-^^^^^^-.                      .'              |
@@ -24,7 +41,7 @@ void MooseSays()
                '-'    | /       \ |
                       |  .-. .-.  |
                       \ / o| |o \ /
-                       |   / \   |    H I, I'M  E N T H U S I A S T I C !
+                       |   / \   |    {message}
                       / `^`   `^` \
                      /             \
                     | '._.'         \
@@ -35,4 +52,25 @@ void MooseSays()
                       \ \'._  ` '_.'
                        `^^` `^^^`
     ");
+}
+
+bool MooseAsks(string question)
+{
+    Console.Write($"{question} (Y/N): ");
+    string answer = Console.ReadLine().ToLower();
+
+    while (answer != "y" && answer != "n")
+    {
+        Console.Write($"{question} (Y/N): ");
+        answer = Console.ReadLine().ToLower();
+    }
+
+    if (answer == "y")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
