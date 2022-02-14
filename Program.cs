@@ -7,20 +7,31 @@ Console.WriteLine();
 MooseSays("H I, I'M  E N T H U S I A S T I C !");
 
 
-void MooseQuestion(string question, string responseTrue, string responseFalse)
+
+// void MooseQuestion(string question, string responseTrue, string responseFalse)
+// {
+//     bool answer = MooseAsks(question);
+//     if (answer)
+//     {
+//         MooseSays(responseTrue);
+//     }
+//     else
+//     {
+//         MooseSays(responseFalse);
+//     }
+// }
+
+// MooseQuestion("Are you shitty programmer?", "Well, keep trying, buddy", "That's cool, can you build a public api for me?");
+
+void MooseQuestion()
 {
-    bool answer = MooseAsks(question);
-    if (answer)
-    {
-        MooseSays(responseTrue);
-    }
-    else
-    {
-        MooseSays(responseFalse);
-    }
+    string[] replies = new string[6] { "As I see it, yes.", "Ask again later.", "Better not tell you now.", "Concentrate and ask again.", "It is decidedly so.", "Very doubtful." };
+    Random r = new Random();
+    int genRand = r.Next(0, replies.Length);
+    Console.WriteLine(replies[genRand]);
 }
 
-MooseQuestion("Are you shitty programmer?", "Well, keep trying, buddy", "That's cool, can you build a public api for me?");
+MooseQuestion();
 void MooseSays(string message)
 
 {
