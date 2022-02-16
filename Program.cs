@@ -4,9 +4,6 @@ Console.WriteLine("Welcome to the Enthusiastic Moose Simulator!");
 Console.WriteLine("--------------------------------------------");
 Console.WriteLine();
 
-MooseSays("H I, I'M  E N T H U S I A S T I C !");
-
-
 
 // void MooseQuestion(string question, string responseTrue, string responseFalse)
 // {
@@ -23,7 +20,7 @@ MooseSays("H I, I'M  E N T H U S I A S T I C !");
 
 // MooseQuestion("Are you shitty programmer?", "Well, keep trying, buddy", "That's cool, can you build a public api for me?");
 
-void MooseQuestion()
+void MooseReply()
 {
     string[] replies = new string[6] { "As I see it, yes.", "Ask again later.", "Better not tell you now.", "Concentrate and ask again.", "It is decidedly so.", "Very doubtful." };
     Random r = new Random();
@@ -31,7 +28,9 @@ void MooseQuestion()
     Console.WriteLine(replies[genRand]);
 }
 
-MooseQuestion();
+MooseSays("I'm the clairvoyant moose");
+MoosePrediction();
+
 void MooseSays(string message)
 
 {
@@ -65,23 +64,16 @@ void MooseSays(string message)
     ");
 }
 
-bool MooseAsks(string question)
+bool MoosePrediction()
 {
-    Console.Write($"{question} (Y/N): ");
-    string answer = Console.ReadLine().ToLower();
-
-    while (answer != "y" && answer != "n")
+    Console.WriteLine("ask me anything and I'll give you a wise response");
+    ConsoleKeyInfo keyInfo = Console.ReadKey();
+    string question = Console.ReadLine().ToLower();
+    while (question != "")
     {
-        Console.Write($"{question} (Y/N): ");
-        answer = Console.ReadLine().ToLower();
+        MooseReply();
+        Console.WriteLine("ask me another one");
+        question = Console.ReadLine().ToLower();
     }
-
-    if (answer == "y")
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return false;
 }
